@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int numSubjects;
+    cout << "Enter number of subjects: ";
+    cin >> numSubjects;
+
+    double gradePoints[100], creditHours[100];
+    double totalGradePoints = 0.0, totalCredits = 0.0;
+
+    for (int i = 0; i < numSubjects; i++) {
+        cout << "\nSubject " << i + 1 << ":\n";
+        cout << "Enter grade point (0.0 - 10.0 or 4.0 scale): ";
+        cin >> gradePoints[i];
+        cout << "Enter credit hours: ";
+        cin >> creditHours[i];
+
+        totalGradePoints += gradePoints[i] * creditHours[i];
+        totalCredits += creditHours[i];
+    }
+
+    double cgpa = totalGradePoints / totalCredits;
+
+    cout << fixed << setprecision(2);
+    cout << "\n-----------------------------\n";
+    cout << "Total Credits: " << totalCredits << endl;
+    cout << "CGPA: " << cgpa << endl;
+    cout << "-----------------------------\n";
+
+    // Optional: Calculate percentage (if using 10-point scale)
+    cout << "Equivalent Percentage: " << cgpa * 9.5 << "%" << endl;
+
+    return 0;
+}
